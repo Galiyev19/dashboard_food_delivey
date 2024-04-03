@@ -1,10 +1,12 @@
 import React from 'react';
 import {Container,TextField,Button,Box} from "@mui/material";
 import {useForm} from "react-hook-form"
-import { useDispatch } from 'react-redux';
-import { loginFetch } from '../../store/slice/loginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginFetch, selectIsAuth } from '../../store/slice/loginSlice';
 
 const Login = () => {
+    const isAuth = useSelector(selectIsAuth)
+
     const dispatch = useDispatch()
     const {
         register,
@@ -12,15 +14,19 @@ const Login = () => {
         reset,
     }= useForm({
         defaultValues:{
-            email:"test@mail.com",
-            password:"qwerty12345",
+            email:"test@gmail.com",
+            password:"qwerty123",
         },
         mode: "onChange"
     })
 
     const onSubmit = async (data) => {
-        // const response = await dispatch(loginFetch(data ))
-        console.log(data)
+        const response = await dispatch(loginFetch(data))
+        console.log(response.payload)
+    }
+
+    if (isAuth) {
+        return <Navigate to="/" />;
     }
 
   return (

@@ -4,8 +4,7 @@ import instance from "../../axios/axios";
 export const loginFetch = createAsyncThunk("/login/fetchAdmin",async(data) => {
     try{
         const response = await instance.post("/sign-in",data)
-
-        return response
+        return response.data
     }catch(e) {
         console.log(e)
     }
@@ -34,6 +33,8 @@ const loginSlice = createSlice({
           })
     },
 })
+
+export const selectIsAuth = (state) => Boolean(state.login.data);
 
 export default loginSlice.reducer;
 
