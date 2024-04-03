@@ -1,0 +1,10 @@
+.modal_form_wrapper{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius:8px;
+  width: clamp(165px, 80%, 550px);
+  /* height:  clamp(189px, 40%, 400px); */
+  padding: 20px 30px;
+  /* gap: 10px; */
+}
