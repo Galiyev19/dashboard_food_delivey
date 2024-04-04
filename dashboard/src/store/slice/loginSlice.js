@@ -10,6 +10,7 @@ export const loginFetch = createAsyncThunk("/login/fetchAdmin",async(data) => {
     }
 })
 
+
 const initialState = {
     data: null,
     isLoding: true,

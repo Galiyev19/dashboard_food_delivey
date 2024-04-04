@@ -23,6 +23,9 @@ const Login = () => {
     const onSubmit = async (data) => {
         const response = await dispatch(loginFetch(data))
         console.log(response.payload)
+        if ("token" in response.payload.data) {
+            window.localStorage.setItem("token", response.payload.data.token)
+        }
     }
 
     if (isAuth) {
