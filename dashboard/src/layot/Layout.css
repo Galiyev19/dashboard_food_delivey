@@ -1,0 +1,23 @@
+.layout_container{
+    display: flex;
+    width: 100%;
+}
+
+
+
+.main__layout{
+    display:flex;
+    width:100%;
+    flex-direction:column;
+    transition: var(--tran-04);
+    transition: all 0.2s ease-in-out;
+    background-image: url("../../assets/bg.svg"); 
+    background-color: transparen;
+    background-size: auto;
+}
+
+.content{
+    display: flex;
+    margin: 20px 30px 30px;
+  
+  }

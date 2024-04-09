@@ -1,0 +1,14 @@
+.nav-container{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+    background-color: #fff;
+    box-shadow: 0 0 40px #eff1f7;
+    z-index: 999;
+    transition: all 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    transition: all .2s ease-in-out; 
+}

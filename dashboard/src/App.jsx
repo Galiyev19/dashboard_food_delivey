@@ -10,7 +10,7 @@ import './App.css'
 
 function App() {
   const dispatch = useDispatch()
-  const isAuth = useSelector(selectIsAuth)
+  const data = useSelector(state => state.adminInfo)
   const [authChecked, setAuthChecked] = useState(false);
 
 
@@ -18,22 +18,26 @@ function App() {
     const fetchData = async () => {
       try {
         await dispatch(AuthMe());
-        // setAuthChecked(true);
+        localStorage.setItem("token",data.data.token)
       } catch (error) {
         console.error("Error while checking authentication:", error);
-  
       }
     };
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthChecked(true);
+    } else {
+      fetchData(); // Вызов fetchData только если нет токена
+    }
+  },[dispatch,authChecked,data])
 
-    fetchData();
-  },[dispatch,isAuth])
-
-  // if (!authChecked) {
-  //   return null;
-  // }
+  if (!authChecked) {
+    return <Login />;
+    // return null
+  }
   return (
     <>
-       {isAuth ? <Layout/> : <Login/>}     
+       {authChecked ? <Layout/> : <Login/>}     
     </>
   )
 }

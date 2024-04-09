@@ -3,6 +3,7 @@ import {Container,TextField,Button,Box} from "@mui/material";
 import {useForm} from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFetch, selectIsAuth } from '../../store/slice/loginSlice';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
     const isAuth = useSelector(selectIsAuth)

@@ -1,16 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { formToJSON } from "axios";
 import instance from "../../axios/axios";
 
 export const AuthMe = createAsyncThunk("/login/authMe", async () => {
   try {
-    const response = await instance.get("/v1/admin/identity/me");
+    const response = await instance.get("/identity/me");
 
     if (response.status === 200) {
       return response.data.responseData;
     }
+
+    if (response.status == 401) {
+      return null
+    }
   } catch (error) {
-    console.error(error);
-    throw error;
+    // console.error(error);
+    // throw error;
   }
 });
 
