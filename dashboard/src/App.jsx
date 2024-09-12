@@ -33,7 +33,6 @@ function App() {
 
   if (!authChecked) {
     return <Login />;
-    // return null
   }
   return (
     <>
